@@ -58,7 +58,14 @@ $(document).ready(function() {
         }
     }
 
+    var autoplay = setInterval(nextSlide, 1500);
 
+    $('.slideshow').mouseenter(function () {
+        clearInterval(autoplay);
+    })
+    $('.slideshow').mouseleave(function () {
+        autoplay = setInterval(nextSlide, 1500);
+    })
 
 
 });
