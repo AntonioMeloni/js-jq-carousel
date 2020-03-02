@@ -57,15 +57,24 @@ $(document).ready(function() {
             prossimaPallino.addClass('active');
         }
     }
-
+    var timeout = 12;
     var autoplay = setInterval(nextSlide, 1500);
+    var autoplayStop = setInterval(function () {
+        timeout--;
+
+        if (timeout == 0) {
+        clearInterval(autoplay);
+        }
+
+    }, 1000);
 
     $('.slideshow').mouseenter(function () {
         clearInterval(autoplay);
     })
+
     $('.slideshow').mouseleave(function () {
         autoplay = setInterval(nextSlide, 1500);
+        timeout = 13;
+        var replay = autoplayStop;
     })
-
-
 });
